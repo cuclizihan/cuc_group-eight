@@ -45,17 +45,19 @@
 
   - 在html文件中使用action语法，规定提交时表单发向何处；
 
-    ![](img\action.jpg)
+    ![action](img\action.jpg)
 
   - 在py文件中使用return render，(request, 'hello.html')
 
     > return render：组合指定的HTML模板和一些要插入到模板中的数据（在名为“context”的变量中提供）来创建HTML文件，是一个使用render函数的快捷方式。
 
-    ![](img/return_render.jpg)
+    ![return_render](img/return_render.jpg)
 
 - 问题3：URL设置有限期
 
   本想使用change()函数进行事件触发设置，即时间结束链接自动失效，后发现change()多表现在表单事件，如下拉选择框、input对话框等，在用户做出选择或做出改变时触发change事件，与思路中的倒计时设置较为不同，于是更改为通过下载按钮失效与否进行。用户进入到本页面时自动开始倒计时，倒计时结束后超链接失效，无法下载文件。
+  
+  ![URL](img/URL.jpg)
 
 ## 参考资料
 
