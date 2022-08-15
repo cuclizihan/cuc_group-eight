@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Download</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+			border:none;
+		}
+		body{
+			background: url(background.png);
+		}
+		h1 a{
+			color:white;
+			text-decoration: none;
+		}
+		h1 a:hover{
+			color:white;
+			text-decoration: underline;
+		}
+		span{
+			color:white;
+			font-size:16px;
+			font-weight: 700;
+			font-family: 楷体;
+		}
+		.box{
+			float:left;
+			width: 600px;
+			height: 550px;
+			margin: 45px 350px;
+			color:white
+		}
+		.title{
+			height: 100px;
+			width: 209px;
+			line-height: 100px;
+			margin:20px auto;
+		}
+		.system table{
+			margin:0 auto;
+		}
+		.system tr{
+			height: 70px;
+		}
+		.system input[type="text"]{
+			height: 30px;
+			width: 165px;
+			background-color:rgba(255,255,255,0.4);
+			border: 1px solid white;
+		}
+		.system input[type="submit"]
+		{
+			height: 50px;
+			width: 100px;
+			background-color: gray;
+			border:3px solid white;
+			font-size:16px; 
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="title">
+			<h1>文件下载页面</h1>
+		</div>
+		<div class="system">
+			<form method="post" action="download.py"> 
+			<table>
+				<tr>
+					<td><span>用户名：</span></td>
+					<td><input type="text" name="username"/></td>
+				</tr>
+				<tr>
+					<td><span>下载文件名：</span></td>
+					<td><input type="text" name="file"></td>
+				</tr> 
+				<tr>
+					<td><span>下载到目录路径：</span></td>
+					<td><input type="text" name="path"></td>
+				</tr> 
+				<tr>
+					<td><input type="submit" value="确定下载"/></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

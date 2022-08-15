@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件</title>
+    <style>
+		*{
+			margin:0;
+			padding: 0;
+			border:none;
+		}
+		body{
+			background: url(background.png);
+		}
+        h1 a{
+			color:white;
+			text-decoration: none;
+		}
+		h1 a:hover{
+			color:white;
+			text-decoration: underline;
+		}
+		span{
+			color:white;
+			font-size:16px;
+			font-weight: 700;
+			font-family: 楷体;
+		}
+		.box{
+			float:left;
+			width: 600px;
+			height: 550px;
+			margin: 45px 350px;
+			color:white
+		}
+		.title{
+			height: 100px;
+			width: 209px;
+			line-height: 100px;
+			margin:20px auto;
+		}
+		.system table{
+			margin:0 auto;
+		}
+		.system tr{
+			height: 70px;
+		}
+		.system input[type="text"]{
+			height: 30px;
+			width: 165px;
+			background-color:rgba(255,255,255,0.4);
+			border: 1px solid white;
+		}
+		.system input[type="submit"]
+		{
+			height: 50px;
+			width: 100px;
+			background-color: gray;
+			border:3px solid white;
+			font-size:16px; 
+		}
+    </style>
+    <script>
+        var txt = $('#Download');
+        var num = 100;
+        var setTime = setInterval(function(){
+            txt.val('下载'+(--num)+'s');
+            if(num == 0){
+                txt.prop('disabled',false);
+                txt.val('下载');
+                clearInterval(setTime);
+            }
+        },1000);  
+    </script>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endwith %}
+    <p>{{username}}，您好！</p>
+    {% if files %}
+        <p>您当前上传了以下文件</p>
+        <ui>
+        {% for file in files %}
+            <li>
+                {{file.filename}}(已加密)
+                {% if file.shared %}
+                (已共享)
+                {% else %}
+                (未共享)
+                {% endif %}
+                <a href="/file/download?filename={{file.filename}}&type=encrypted">下载</a><input type="button" id="Download" value="下载(100s)" disabled="disabled">
+                <a href="/file/download?filename={{file.filename}}&type=hashvalue">下载哈希值</a><input type="button" id="Download" value="下载(100s)" disabled="disabled">
+                <a href="/file/download?filename={{file.filename}}&type=plaintext">解密并下载</a><input type="button" id="Download" value="下载(100s)" disabled="disabled">
+                <a href="/file/download?filename={{file.filename}}&type=signature">下载签名文件</a><input type="button" id="Download" value="下载(100s)" disabled="disabled">
+                <a href="/file/share?filename={{file.filename}}">
+                {% if file.shared %}
+                    取消共享
+                {% else %}
+                    进行共享
+                {% endif %}
+                </a>
+                <a href="/file/remove?filename={{file.filename}}">删除</a>
+            </li>
+        {% endfor %}
+        </ui>
+    {% else %}
+        <p>您当前没有上传任何文件</p>
+    {% endif %}
+    <a href="/file/upload">上传</a>
+    <a href="/shared_file">共享文件</a>
+    <a href="/logout">退出</a>
+</body>
+</html>

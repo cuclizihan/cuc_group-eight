@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>  
+<head>  
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>  
+	<title>Upload</title>  
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+			border:none;
+		}
+		body{
+			background: url(background.png);
+		}
+		h1 a{
+			color:white;
+			text-decoration: none;
+		}
+		h1 a:hover{
+			color:white;
+			text-decoration: underline;
+		}
+		span{
+			color:white;
+			font-size:16px;
+			font-weight: 700;
+			font-family: 楷体;
+		}	
+		.box{
+			float:left;
+			width: 1000px;
+			height: 550px;
+			margin: 45px 350px;
+		}
+		.title{
+			height: 100px;
+			width: 209px;
+			line-height: 100px;
+			margin:20px auto;
+			color: white;
+		}
+		.system{
+			height: 400px;
+		}
+		.system tr{
+			height: 70px;
+		}
+		.system input[type="text"]{
+			height: 30px;
+			width: 165px;
+			background-color:rgba(255,255,255,0.4);
+			border: 1px solid white;
+		}
+		.system textarea{
+			background-color:rgba(255,255,255,0.4);
+			border: 1px solid white;
+		}
+		.system input[type="file"]
+		{
+			height: 30px;
+			width: 250px;
+		}
+		.system input[type="submit"]
+		{
+			height: 50px;
+			width: 200px;
+			background-color: gray;
+			border:3px solid white;
+			font-size:16px; 
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="title">
+			<h1>文件上传页面</a></h1>
+		</div>
+		<div class="system">
+			<form enctype="multipart/form-data" method="post" action="upload.py"> 
+			<table>
+				<tr>
+					<td><span>用户名：</span></td>
+					<td><input type="text" name="username"/></td>
+				</tr>
+				<tr>
+					<td><span>文件说明：</span></td>
+					<td><textarea name="fileintro" rows="10" cols="50"></textarea></td>
+				</tr>  
+				<tr>
+					<td><span>选择文件：</span></td>
+					<td><input type="file" name="file"/></td>
+				</tr>  
+				<tr>
+					<td><input type="submit" value="上传文件"/></td>
+					<td><a href="index.html">退出</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>	
+</html>
